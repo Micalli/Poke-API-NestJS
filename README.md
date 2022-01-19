@@ -24,15 +24,29 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Uma APIRest consumindo a [PokeApi](https://pokeapi.co/), com CRUD de pokemons e autentificação JWT
 
-## Installation
+
+- Consuma o endpont GET http://localhost:3000/pokemons/ para listar os pokemons criados.
+- Consuma o endpont POST http://localhost:3000/pokemons/ para criar um pokemon.
+- Consuma o endpont GET http://localhost:3000/pokemons/:id para pegar um pokemons pelo ID.
+- Consuma o endpont PATCH http://localhost:3000/pokemons/:id para alterar algum atributo do pokemon pelo ID.
+- Consuma o endpont DELETE http://localhost:3000/pokemons/ para deletar um pokemon pelo ID.
+- Consuma o endpont GET http://localhost:3000/pokemons/list/:page para listar 10 pokemons da PokeAPi por página.
+- Consuma o endpont GET http://localhost:3000/pokemons/list/pokemon/:id para pegar um pokemons pelo ID.
+- Consuma o endpont POST http://localhost:3000/pokemons/users/ para cadastrar um usuario.
+- Consuma o endpont POST http://localhost:3000/pokemons/users/singin/ para logar e receber o token para ter acesso as outras rotas.
+- O login é passado na body em urlencoded com o username e password
+- Expiração do token em 60 segundos
+- Token é passado na Authorization como Bearer Token
+
+## Instalação
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Rodando o projeto
 
 ```bash
 # development
@@ -45,7 +59,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Teste
 
 ```bash
 # unit tests
@@ -58,16 +72,10 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Contato
 
-## Stay in touch
+  [Linkedin](https://www.linkedin.com/in/brunomicalli/)
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+  Feito por <strong>Bruno Micalli</strong> 😊
 
-## License
-
-Nest is [MIT licensed](LICENSE).
