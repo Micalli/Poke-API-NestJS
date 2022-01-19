@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreatePokemonDto } from './pokemons/dto/create-pokemon.dto';
-import { UpdatePokemonDto } from './pokemons/dto/update-pokemon.dto';
-import { Pokemon } from './pokemons/entities/pokemon.entity';
+import { CreatePokemonDto } from './dto/create-pokemon.dto';
+import { UpdatePokemonDto } from './dto/update-pokemon.dto';
+import { Pokemon } from './entities/pokemon.entity';
 
 import fetch from 'node-fetch';
 
@@ -23,8 +23,13 @@ export class PokemonsService {
     return this.pokemonsRepository.find();
   }
 
-  findOne(id: number): Promise<Pokemon> {
-    return this.pokemonsRepository.findOne(id);
+  async findOne(id: number): Promise<Pokemon> {
+    const foundPokemon = await this.pokemonsRepository.findOne(id);
+    if (foundPokemon) {
+      return this.pokemonsRepository.findOne(id);
+    } else {
+      throw new HttpException('Pokemon not found', HttpStatus.NOT_FOUND);
+    }
   }
 
   async update(id: number, post: UpdatePokemonDto) {
@@ -34,7 +39,7 @@ export class PokemonsService {
       return updatePokemon;
     }
 
-    throw new HttpException('Pokemon not found', HttpStatus.NOT_FOUND);
+    throw new HttpException('Pokemon não encontrado', HttpStatus.NOT_FOUND);
   }
 
   async remove(id: number) {
@@ -42,7 +47,7 @@ export class PokemonsService {
     if (!deletedPokemon.affected) {
       throw new HttpException('Pokemon não encontrado', HttpStatus.NOT_FOUND);
     } else {
-      throw new HttpException('Pokemon deletado', HttpStatus.OK);
+      throw new HttpException('Pokemon deletado!', HttpStatus.OK);
     }
   }
 

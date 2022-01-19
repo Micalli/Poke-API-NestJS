@@ -1,6 +1,6 @@
 export class CreatePokemonDto {
   id: number;
-  pokemon: string;
+  name: string;
   height: number;
   weight: number;
 }
