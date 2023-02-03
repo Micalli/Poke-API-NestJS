@@ -33,19 +33,19 @@ export class PokemonsController {
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.pokemonsService.findOne(+id);
+    return this.pokemonsService.findOne(Number(id));
   }
 
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePokemonDto: UpdatePokemonDto) {
-    return this.pokemonsService.update(+id, updatePokemonDto);
+    return this.pokemonsService.update(Number(id), updatePokemonDto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.pokemonsService.remove(+id);
+    return this.pokemonsService.remove(Number(id));
   }
 
   @UseGuards(JwtAuthGuard)
